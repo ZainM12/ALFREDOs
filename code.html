@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Discount Code</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #codeContainer {
+      margin-top: 20px;
+    }
+
+    #codeInput {
+      padding: 10px;
+      font-size: 1rem;
+      width: 200px;
+      margin-right: 10px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #submitButton {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #ce2b37;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #submitButton:hover {
+      background-color: #9e1f2a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Enter Your Discount Code</h1>
+
+  <div id="codeContainer">
+    <input type="text" id="codeInput" placeholder="Enter code here" />
+    <button id="submitButton" onclick="code2()">Submit</button>
+  </div>
+
+  <script>
+    // Function to validate the code entered by the user
+    function code2() {
+      const userCode = document.getElementById("codeInput").value; // Get the input value
+      const storedCode = localStorage.getItem("generatedCode"); // Retrieve the code from localStorage
+
+      if (userCode === storedCode) {
+        alert("Code is correct! Enjoy your discount!");
+        window.location.href = "deal.html"
+      } else {
+        alert("Invalid code. Please try again.");
+      }
+    }
+  </script>
+  
+</body>
+</html>
