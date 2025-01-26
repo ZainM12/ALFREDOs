@@ -1,69 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ALFREDO's Ristorante</title>
   <style>
-/* General Reset */
-body {
-  font-family: 'Trebuchet MS', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fdf6e3; /* Off-white background for warmth */
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    /* General Reset */
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdf6e3; /* Off-white background for warmth */
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-header {
-  background: linear-gradient(90deg, #009246, #fff, #ce2b37);
-  color: rgb(0, 0, 0);
-  padding: 20px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    header {
+      background: linear-gradient(90deg, #009246, #fff, #ce2b37);
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-header h1 {
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: 'Georgia', serif;
-}
+    header h1 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Georgia', serif;
+    }
 
-button {
-  margin: 10px;
-  padding: 12px 20px;
-  background-color: #ce2b37; /* Italian red */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: #ce2b37; /* Italian red */
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-button:hover {
-  background-color: #9e1f2a; /* Darker red */
-}
+    button:hover {
+      background-color: #9e1f2a; /* Darker red */
+    }
 
-footer {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #555;
-}
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #555;
+    }
 
-footer a {
-  color: #009246;
-  text-decoration: none;
-}
+    footer a {
+      color: #009246;
+      text-decoration: none;
+    }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -71,26 +70,38 @@ footer a:hover {
     <h1 style="cursor:pointer;">ALFREDO's Ristorante</h1>
   </header>
 
-  <button onclick="showOrderMessage('BUY 2 PIZZA GET 2 PIZZA + DESSERT')">BUY 2 PIZZA GET 2 PIZZA + DESSERT</button>
-  <button onclick="showOrderMessage('BUY 2 ICECREAM GET 2 ICECREAM')">BUY 2 ICECREAM GET 2 ICECREAM</button>
-  <button onclick="showOrderMessage('total - (total - squareRoot(total))')">total - (total - squareRoot(total))</button>
+  <button id="dealButton"></button>
 
   <script>
-    function showOrderMessage(orderDetails) {
-      alert("Your order is confirmed. It will be ready soon.");
-      
-      // Disable all buttons after the first click
-      const buttons = document.querySelectorAll('button');
-      buttons.forEach(button => {
-        button.disabled = true;
-        button.style.cursor = 'not-allowed';
-      });
+    // Array of deals
+    const deals = [
+      "BUY 2 PIZZA GET 2 PIZZA + DESSERT",
+      "BUY 2 ICECREAM GET 2 ICECREAM",
+      "GET A FREE DRINK WITH EVERY PASTA ORDER",
+      "20% OFF ON ALL ORDERS ABOVE $50",
+      "FREE DELIVERY ON YOUR FIRST ORDER"
+    ];
+
+    // Select a random deal
+    const randomDeal = deals[Math.floor(Math.random() * deals.length)];
+
+    // Display the random deal on the button
+    const dealButton = document.getElementById("dealButton");
+    dealButton.textContent = randomDeal;
+
+    // Handle button click
+    dealButton.addEventListener("click", () => {
+      alert("Your order is confirmed for the deal: " + randomDeal);
+
+      // Disable the button after the first click
+      dealButton.disabled = true;
+      dealButton.style.cursor = "not-allowed";
 
       // Redirect to index.html after alert
       setTimeout(() => {
         window.location.href = "index.html";
       }, 2000); // Delay of 2 seconds before redirect
-    }
+    });
   </script>
 </body>
 </html>
